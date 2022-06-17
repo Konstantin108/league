@@ -9,11 +9,11 @@ interface UserRepositoryInterface
 {
     public function getAll();
 
+    public function store(UserRequest $userRequest);
+
     public function getOne(User $user);
 
     public function update(UserRequest $userRequest, User $user);
-
-    public function store(UserRequest $userRequest);
 
     public function delete(User $user);
 }

@@ -19,20 +19,19 @@ class UserRequest extends FormRequest
     /**
      * Get the validation rules that apply to the request.
      *
-     * @return array<string, mixed>
+     * @return array
      */
     public function rules()
     {
         return [
             'name' => [
-                'required',
-                'string',
-                'min:1'
+                'required'
+            ],
+            'avatar_path' => [
+                'required'
             ],
             'phone_number' => [
-                'required',
-                'numeric',
-                'min:1'
+                'required'
             ]
         ];
     }
@@ -40,8 +39,27 @@ class UserRequest extends FormRequest
     public function messages()
     {
         return [
-            'required' => 'Поле не заполнено!',
-            'numeric' => 'Разрешен ввод только цифр!'
+            'name.required' => 'A title is required',
+            'avatar_path.required' => 'A message is required',
+            'phone_number.required' => 'A message is required',
+        ];
+    }
+
+    public function errors()
+    {
+        return [
+            'name' => 'A title is required',
+            'avatar_path' => 'A message is required',
+            'phone_number' => 'A message is required',
+        ];
+    }
+
+    public function name()
+    {
+        return [
+            'name' => 'A title is required',
+            'avatar_path' => 'A message is required',
+            'phone_number' => 'A message is required',
         ];
     }
 }

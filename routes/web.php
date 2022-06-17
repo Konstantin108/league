@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,24 +13,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [UserController::class, 'index'])
-    ->name('index');
-
-Route::get('/one/{id}', [UserController::class, 'one'])
-    ->where('id', '\d+')
-    ->name('one');
-
-Route::post('/update/{id}', [UserController::class, 'update'])
-    ->where('id', '\d+')
-    ->name('update');
-
-Route::get('/create/{id}', [UserController::class, 'create'])
-    ->where('id', '\d+')
-    ->name('create');
-
-Route::post('/store', [UserController::class, 'store'])
-    ->name('store');
-
-Route::get('/delete/{id}', [UserController::class, 'delete'])
-    ->where('id', '\d+')
-    ->name('delete');
+Route::get('/', function () {
+    return view('welcome');
+});
