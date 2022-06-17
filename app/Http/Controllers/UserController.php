@@ -1,10 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
+use App\Http\Controllers\Controller;
 use App\Http\Requests\UserRequest;
 use App\Models\User;
 use App\Repositories\Interfaces\UserRepositoryInterface;
+use function redirect;
+use function view;
 
 class UserController extends Controller
 {
@@ -18,28 +21,32 @@ class UserController extends Controller
     public function index()
     {
         $users = $this->userRepository->getAll();
-        return view('content/all', ['users' => $users]);
+//        return view('content/all', ['users' => $users]);
+        return $users;
     }
 
-    public function one($id): \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Contracts\Foundation\Application
+    public function one($id)
     {
-        $id = User::find($id);
+        $id = User::findOrFail($id);
         $user = $this->userRepository->getOne($id);
-        return view('content/one', ['user' => $user]);
+//        return view('content/one', ['user' => $user]);    //<-- для WEB
+        return $user;
     }
 
     public function delete($id): \Illuminate\Http\RedirectResponse
     {
-        $id = User::find($id);
-        $this->userRepository->delete($id);
-        return redirect()->route('index')
-            ->with('success', 'Пользователь удалён');
+        $id = User::findOrFail($id);
+        return $this->userRepository->delete($id);
+//        return redirect()->route('index')
+//            ->with('success', 'Пользователь удалён');    //<-- для WEB
+        $users = $this->userRepository->getAll();
+        return $users;
     }
 
     public function create($id)
     {
         if ($id != 0) {
-            $id = User::find($id);
+            $id = User::findOrFail($id);
             $user = $this->userRepository->getOne($id);
             return view('content/create', ['user' => $user]);
         } else {
@@ -50,17 +57,18 @@ class UserController extends Controller
     public function store(UserRequest $userRequest)
     {
         $done = $this->userRepository->store($userRequest);
-        if ($done) {
-            return redirect()->route('index')
-                ->with('success', 'Пользователь добавлен');
-        }
-        return redirect()->route('index')
-            ->with('error', 'Произошла ошибка');
+        return $done;
+//        if ($done) {
+//            return redirect()->route('index')
+//                ->with('success', 'Пользователь добавлен');    //<-- для WEB
+//        }
+//        return redirect()->route('index')
+//            ->with('error', 'Произошла ошибка');
     }
 
     public function update(UserRequest $userRequest, $id)
     {
-        $user = User::find($id);
+        $user = User::findOrFail($id);
         $done = $this->userRepository->update($userRequest, $user);
         if ($done) {
             return redirect()->route('index')
