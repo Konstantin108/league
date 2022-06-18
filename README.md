@@ -26,14 +26,14 @@ API реализовал, проверить его работу можно че
 API возвращает объекты в формате JSON, если валидация не пройдена так же возвращается
 JSON с сообщениями об ошибках(необходимо в хедере передавать accept application/json)
 
-FormRequest для валидации входных данных name, phone_number, avatar_path
+FormRequest для валидации входных данных name, phone_number, avatar_path, 
 поле id автоинкрементное. В файле UserRequest настроены правила, поля не 
 должны оставаться пустыми, поле phone_number должно содержать только цифры
 
 Файл InDataBaseUserRepository отвечает за обращение к БД, реализует интерфейс UserRepositoryInterface
 
-php artisan migrate - для создание таблицы
-php artisan db:seed --class=UserSeeder - создает трех пользователей
+* php artisan migrate - для создание таблицы
+* php artisan db:seed --class=UserSeeder - создает трех пользователей
 
 
 
