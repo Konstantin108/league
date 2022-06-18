@@ -14,11 +14,17 @@
 * phone_number
 
 Задание выполнил:
-API
+API реализовал, проверить его работу можно через Postman
+адрес: http://league.local/api/
 
-FormRequest для валидации входных данных name и phone_number
-поле id автоинкрементное, поле avatar_path может оставаться пустым,
-если аватар не загружен. В файле UserRequest настроены правила, поля не 
+получить все записи: http://league.local/api/users/
+получить одну запись: http://league.local/api/users/{номер id}
+удалить запись: http://league.local/api/users/{номер id}  <- метод DELETE
+добавить запись: http://league.local/api/users/  <- метод POST
+обновить запись: http://league.local/api/users/{номер id}  <- метод PUT
+
+FormRequest для валидации входных данных name, phone_number, avatar_path
+поле id автоинкрементное. В файле UserRequest настроены правила, поля не 
 должны оставаться пустыми, поле phone_number должно содержать только цифры
 
 Файл InDataBaseUserRepository отвечает за обращение к БД, реализует интерфейс UserRepositoryInterface

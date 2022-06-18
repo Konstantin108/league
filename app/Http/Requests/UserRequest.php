@@ -31,35 +31,9 @@ class UserRequest extends FormRequest
                 'required'
             ],
             'phone_number' => [
-                'required'
+                'required',
+                'numeric'
             ]
-        ];
-    }
-
-    public function messages()
-    {
-        return [
-            'name.required' => 'A title is required',
-            'avatar_path.required' => 'A message is required',
-            'phone_number.required' => 'A message is required',
-        ];
-    }
-
-    public function errors()
-    {
-        return [
-            'name' => 'A title is required',
-            'avatar_path' => 'A message is required',
-            'phone_number' => 'A message is required',
-        ];
-    }
-
-    public function name()
-    {
-        return [
-            'name' => 'A title is required',
-            'avatar_path' => 'A message is required',
-            'phone_number' => 'A message is required',
         ];
     }
 }

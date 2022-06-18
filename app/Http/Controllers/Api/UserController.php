@@ -36,8 +36,7 @@ class UserController extends Controller
      */
     public function store(UserRequest $userRequest)
     {
-        $user = User::create($userRequest->validated());
-        return $user;
+        return $this->userRepository->store($userRequest);
     }
 
     /**
@@ -48,7 +47,6 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-//        $id = User::findOrFail($id);
         return $this->userRepository->getOne($user);
     }
 
