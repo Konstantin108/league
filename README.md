@@ -32,7 +32,7 @@ FormRequest для валидации входных данных name, phone_nu
 
 Файл InDataBaseUserRepository отвечает за обращение к БД, реализует интерфейс UserRepositoryInterface
 
-* php artisan migrate - для создание таблицы
+* php artisan migrate - для создания таблицы
 * php artisan db:seed --class=UserSeeder - создает трех пользователей
 
 
