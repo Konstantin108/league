@@ -17,11 +17,11 @@
 API реализовал, проверить его работу можно через Postman
 адрес: http://league.local/api/
 
-получить все записи: http://league.local/api/users/
-получить одну запись: http://league.local/api/users/{номер id}
-удалить запись: http://league.local/api/users/{номер id}  <- метод DELETE
-добавить запись: http://league.local/api/users/  <- метод POST
-обновить запись: http://league.local/api/users/{номер id}  <- метод PUT
+* получить все записи: http://league.local/api/users/
+* получить одну запись: http://league.local/api/users/{номер id}
+* удалить запись: http://league.local/api/users/{номер id}  <- метод DELETE
+* добавить запись: http://league.local/api/users/  <- метод POST
+* обновить запись: http://league.local/api/users/{номер id}  <- метод PUT
 
 FormRequest для валидации входных данных name, phone_number, avatar_path
 поле id автоинкрементное. В файле UserRequest настроены правила, поля не 
